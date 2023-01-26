@@ -13,11 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -40,8 +36,6 @@ public class CarControllerTests {
                                 .accept("application/json"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(print());
-
-        assertNotNull(mockMvc);
     }
 
     @Test
@@ -57,8 +51,9 @@ public class CarControllerTests {
                     .andExpectAll(
                             status().isOk(),
                             content().contentType(MediaType.APPLICATION_JSON),
-                            jsonPath("$.model").value("Camry")
-                );
+                            jsonPath("$.model").value("Camry"),
+                            jsonPath("$.price").value(18000),
+                            jsonPath("$.carManufacturer").value(Manufacturer.TOYOTA.toString())
+        );
     }
-
 }

@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TruckRepository extends CrudRepository<Truck, Long> {
 
+    Truck getTruckById(Long id);
 
 }

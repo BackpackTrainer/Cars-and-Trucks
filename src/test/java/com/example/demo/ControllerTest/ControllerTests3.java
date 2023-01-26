@@ -3,7 +3,9 @@ package com.example.demo.ControllerTest;
 import com.example.demo.Controllers.CarController;
 import com.example.demo.Model.Car;
 import com.example.demo.Model.Manufacturer;
+import com.example.demo.Model.Truck;
 import com.example.demo.Services.CarService;
+import com.example.demo.Services.TruckService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -27,16 +29,11 @@ public class ControllerTests3 {
     @MockBean
     private CarService carService;
 
+    @MockBean
+    private TruckService truckService;
+
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private CarController uut;
-
-    @Test
-    public void doesItAllWork()  {
-        assertTrue(uut != null);
-    }
 
     @Test
     public void testGetCarsById() throws Exception {
@@ -69,5 +66,19 @@ public class ControllerTests3 {
                         content().contentType(MediaType.APPLICATION_JSON)
                 );
         verify(carService, times(1)).getCarById(carId);
+    }
+
+    @Test
+    public void testGettingCheapestVehicleMakesProperCall() throws Exception {
+        Car cheapestCar = new Car(Manufacturer.TOYOTA, "Camry", 18000);
+        when(carService.getCheapestVehicle()).thenReturn(cheapestCar);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost8080/cheapestVehicle"))
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType(MediaType.APPLICATION_JSON)
+                );
+        verify(carService, times(1)).getCheapestVehicle();
+
     }
 }

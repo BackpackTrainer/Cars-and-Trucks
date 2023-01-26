@@ -15,11 +15,13 @@ import java.util.List;
 public class CarService {
 
     private CarRepository carRepo;
-    private TruckRepository truckRepo;
+    //private TruckRepository truckRepo;
+
+    private TruckService truckService;
 
     @Autowired
-    public void setTruckRepo(TruckRepository truckRepo) {
-        this.truckRepo = truckRepo;
+    public void setTruckService(TruckService truckService) {
+        this.truckService = truckService;
     }
     @Autowired
     public void setCarRepo(CarRepository carRepo) {
@@ -43,13 +45,6 @@ public class CarService {
         Car cheapestCar = getCheapestCar();
         Truck cheapestTruck = getCheapestTruck();
         return cheapestCar.getPrice() < cheapestTruck.getPrice() ? cheapestCar:cheapestTruck;
-
-        //condition ? A:B   if condition is true, return A.  if false, return B
-
-//        if (cheapestCar.getPrice() < cheapestTruck.getPrice()) {
-//            return cheapestCar;
-//        }else return cheapestTruck;
-
     }
 
     public Car getCheapestCar() {
@@ -66,15 +61,6 @@ public class CarService {
     }
 
     public Truck getCheapestTruck() {
-        List<Truck> trucks = (List<Truck>) truckRepo.findAll();
-        Truck cheapestTruck = null;
-        double cheapestPricedTruck = 1000000.0;
-        for (Truck t : trucks) {
-            if (t.getPrice() < cheapestPricedTruck) {
-                cheapestPricedTruck = t.getPrice();
-                cheapestTruck = t;
-            }
+       return truckService.getCheapestTruck();
         }
-        return cheapestTruck;
-    }
 }

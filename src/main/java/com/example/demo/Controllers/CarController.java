@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CarController {
 
+    @Autowired
     private CarService carService;
 
-    @Autowired
+    //@Autowired
     public void setCarService(CarService carService) {
         this.carService = carService;
     }
@@ -27,6 +28,7 @@ public class CarController {
 
     @GetMapping("cars/{id}")
     public Car getCarById(@PathVariable Long id)  {
+        System.out.println("Request received with a parameter of " + id);
         return carService.getCarById(id);
     }
 
@@ -37,6 +39,7 @@ public class CarController {
 
     @GetMapping("cheapestVehicle")
     public Vehicle getCheapestVehicle()  {
+
         return carService.getCheapestVehicle();
     }
 

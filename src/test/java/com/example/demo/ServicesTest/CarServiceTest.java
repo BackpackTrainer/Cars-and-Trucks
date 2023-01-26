@@ -7,6 +7,7 @@ import com.example.demo.Model.Vehicle;
 import com.example.demo.Repos.CarRepository;
 import com.example.demo.Repos.TruckRepository;
 import com.example.demo.Services.CarService;
+import com.example.demo.Services.TruckService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -73,15 +74,14 @@ public class CarServiceTest {
     public void testGettingCheapestVehicle()  {
         Vehicle actualResult;
 
-        TruckRepository truckRepo = mock(TruckRepository.class);
-        uut.setTruckRepo(truckRepo);
+        TruckService truckService;
 
-        when(repository.findAll()).thenReturn(getListOfCars());
-        when(truckRepo.findAll()).thenReturn(ServiceTestUtility.getListOfTrucks());
 
         actualResult = uut.getCheapestVehicle();
 
-       // assertEquals(cheapestTruck, actualResult);
+        Truck cheapestTruck = ServiceTestUtility.getListOfTrucks().get(2);
+
+       assertEquals(cheapestTruck.getPrice(), actualResult.getPrice());
     }
 
 }
