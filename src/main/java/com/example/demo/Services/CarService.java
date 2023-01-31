@@ -34,6 +34,7 @@ public class CarService {
 
 
     public Car getCarById(Long id) {
+        System.out.println("Car service getCarById method called with parameter of " + id);
         return carRepo.getCarById(id);
     }
 
