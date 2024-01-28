@@ -60,11 +60,10 @@ public class CarControllerTests2 {
     public void testGettingAllCars() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("http://localhost:8080/cars/"))
+                .get("http://localhost:8080/cars"))
                 .andExpectAll(
                         status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON)
-
                 );
 
         verify(carService, times(1)).getAllCars();
@@ -77,7 +76,7 @@ public class CarControllerTests2 {
         when(carService.getCheapestCar()).thenReturn(cheapestCar);
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("http://localhost:8080/cheapestCar/"))
+                .get("http://localhost:8080/cheapestCar"))
                 .andExpectAll(
                         status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON),

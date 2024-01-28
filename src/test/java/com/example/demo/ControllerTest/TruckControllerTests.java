@@ -38,7 +38,7 @@ public class TruckControllerTests {
     public void testGettingAllTrucksMakesTheProperCall() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("http://localhost:8080/trucks/"));
+                .get("http://localhost:8080/trucks"));
 
         verify(truckService, times(1)).getAllTrucks();
     }
@@ -78,7 +78,7 @@ public class TruckControllerTests {
         when(truckService.getCheapestTruck()).thenReturn(cheapestTruck);
 
         mockMvc.perform(MockMvcRequestBuilders
-                        .get("http://localhost:8080/trucks/cheapestTruck/"))
+                        .get("http://localhost:8080/trucks/cheapestTruck"))
                 .andExpectAll(
                         status().isOk(),
                         content().contentType(MediaType.APPLICATION_JSON),

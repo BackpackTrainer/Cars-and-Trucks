@@ -20,10 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(CarController.class)
 @AutoConfigureMockMvc
 public class CarControllerTests {
-
     @MockBean
     private CarService carService;
-
     @Autowired
     private MockMvc mockMvc;
 

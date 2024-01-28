@@ -61,6 +61,10 @@ public class CarService {
         return cheapestCar;
     }
 
+    public Car saveCar(Car car)  {
+        return carRepo.save(car);
+    }
+
     public Truck getCheapestTruck() {
        return truckService.getCheapestTruck();
         }
