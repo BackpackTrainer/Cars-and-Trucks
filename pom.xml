@@ -88,26 +88,12 @@
             <version>2.12.1</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.httpcomponents.client5</groupId>-->
-<!--            <artifactId>httpclient5</artifactId>-->
-<!--            <version>5.1</version>-->
-<!--        </dependency>-->
-
         <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>5.3.1</version>
         </dependency>
-
-
-
-        <!--        <dependency>-->
-<!--            <groupId>org.apache.httpcomponents</groupId>-->
-<!--            <artifactId>httpclient</artifactId>-->
-<!--            <version>4.3.6</version>-->
-<!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
@@ -129,26 +115,12 @@
             <version>4.17.0</version>
         </dependency>
 
-
-        <!-- WebDriverManager for managing browser driver binaries -->
-<!--        <dependency>-->
-<!--            <groupId>io.github.bonigarcia</groupId>-->
-<!--            <artifactId>webdrivermanager</artifactId>-->
-<!--            <version>5.0.3</version>-->
-<!--        </dependency>-->
-
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.6.2</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.google.guava</groupId>-->
-<!--            <artifactId>guava</artifactId>-->
-<!--            <version>31.0.1-jre</version>-->
-<!--        </dependency>-->
 
     </dependencies>
 
