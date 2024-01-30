@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,10 +22,15 @@ public class NavigationStepDefinitions {
 //        WebDriverManager.firefoxdriver().setup();
 //        driver = new FirefoxDriver();
 
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().driverVersion("121.0.6167.140").setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
+    }
+
+    @After
+    public void teardown()  {
+    driver.quit();
     }
 
     @Given("I have a browser open")
